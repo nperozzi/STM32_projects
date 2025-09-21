@@ -19,12 +19,13 @@ typedef enum
 	AHT20_init_cmd_parameter2 = 0x00,
 	AHT20_trigger_measurement_cmd = 0xAC,
 	AHT20_trigger_measurement_cmd_parameter1 = 0x33,
-	AHT20_trigger_measurement_cmd_parameter2 = 0x00
-
+	AHT20_trigger_measurement_cmd_parameter2 = 0x00,
+	AHT20_soft_reset_cmd = 0xBA
 } AHT20_cmd_t ;
 
-void AHT20_init(I2C_HandleTypeDef *hi2c1);
+void AHT20_init(I2C_HandleTypeDef *hi2c);
 HAL_StatusTypeDef AHT20_measure(float *temperature, float *humidity);
+HAL_StatusTypeDef AHT20_soft_reset(void);
 
 
 #endif /* AHT20_H_ */

@@ -73,7 +73,7 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 	HAL_StatusTypeDef return_msg;
-	uint8_t buf[12];
+	uint8_t buf[24];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
