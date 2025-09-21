@@ -1,21 +1,26 @@
-
 # STM32CubeIDE build output
-Debug/
-Release/
-*.o
-*.d
-*.elf
-*.map
-*.bin
-*.hex
-*.list
-*.srec
+**/Debug/
+**/Release/
+**/.settings/
+**/*.launch
+**/*.o
+**/*.d
+**/*.elf
+**/*.map
+**/*.bin
+**/*.hex
+**/*.list
+**/*.srec
 
 # Eclipse/CubeIDE metadata
-.settings/
-.project
-.cproject
+**/.settings/
+**/.project
+**/.cproject
+
+# CubeMX-generated files
+**/Drivers/STM32F4xx_HAL_Driver/
+**/Drivers/CMSIS/
 
 # OS-specific files
-.DS_Store
-Thumbs.db
+**/.DS_Store
+**/Thumbs.db
