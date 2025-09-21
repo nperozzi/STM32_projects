@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 #include <string.h>
 #include "aht20.h"
 /* USER CODE END Includes */
@@ -71,7 +72,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-//	uint8_t buf[12];
+	HAL_StatusTypeDef return_msg;
+	uint8_t buf[12];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -103,11 +105,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  AHT20_measure(&temperature, &humidity);
-	  HAL_Delay(2000);
+	  return_msg = AHT20_measure(&temperature, &humidity);
+	  if (return_msg != HAL_OK)
+	  {
+		  strcpy((char*) buf, "Error: Transmit Error\r\n");
+	  }
+	  else
+	  {
+		  sprintf((char*)buf, "Temp: %.2f, Hum: %.2f\r\n", temperature, humidity);
+	  }
 
-	  //HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
-	  //HAL_Delay(500);
+	  HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
+	  HAL_Delay(2000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
